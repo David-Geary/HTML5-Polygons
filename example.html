@@ -1,0 +1,167 @@
+<!doctype html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
+   <meta name="apple-mobile-web-app-capable" content="yes"/>
+ 
+   <title>Dragging and Rotating Polygons</title>
+   <meta name="description" content="From Core HTML5 Canvas by David Geary">
+
+   <style>
+body {
+   background: skyblue;
+   font: Arial;
+}
+
+a {
+   text-decoration: none;
+}
+
+input {
+   font: 12px Arial;
+}
+
+button {
+   font: 12px Arial;
+}
+
+select {
+   font: 12px Arial;
+   margin-right: 10px;
+}
+
+.paint-select {
+   margin-right: 12px;
+   font: 12px Arial;
+}
+
+a:hover {
+	border-bottom: 1px solid #999;
+}
+
+#wrapper {
+   width: 870px;
+   margin: 0 auto;
+   margin-top: 11px;
+}
+
+.shadow {
+   -webkit-box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+   -moz-box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+   box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+}
+
+#polygons-div {
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+   opacity: 0;
+   display: none;
+}
+  
+#polygons-canvas {
+   position: absolute;
+   left: 20px;
+   top: 50px;
+   border: thin inset rgba(0,0,0,0.3);
+   -webkit-box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+   -moz-box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+   box-shadow: 4px 4px 8px rgba(60, 60, 70, 0.7);
+   cursor: pointer;
+}
+
+#polygons-controls {
+   margin-left: 20px;
+   margin-top: 13px;
+}
+
+#polygons-fill-style-input {
+   margin-right: 10px;
+   cursor: pointer;
+}
+
+#polygons-stroke-style-input {
+   margin-right: 10px;
+   cursor: pointer;
+}
+
+#polygons-erase-all-button {
+   margin-left: 20px;
+   background: rgba(80,140,230,0.2);
+   color: navy;
+   font-size: 0.9em;
+   border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -o-border-radius: 10px;
+   -moz-border-radius: 10px;
+   font: 12px Arial;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   text-shadow: 1px 1px 1px rgb(255,255,255);
+}
+
+#polygons-transparency-slider {
+   position: absolute;
+   top: 10px;
+   left: 295px;
+   width: 150px;
+   height: 30px;
+}
+
+#polygons-sides-selections {
+   position: absolute;
+   top: 12px;
+   left: 455px;
+   width: 400px;
+}
+   </style>
+</head>
+
+<body>
+      <div id='polygons-controls'>
+           Stroke: <input id='polygons-stroke-style-input' class='color' size='9' value='#00AAFF'/>
+            Fill: <input id='polygons-fill-style-input' class='color' size='9' value='#AACCFF'/>
+
+            <div id='polygons-sides-selections'>
+               Sides: <select id='polygons-sides-select'>
+                        <option value=4>4</option>
+                        <option value=5 selected>5</option>
+                        <option value=6>6</option>
+                        <option value=7>7</option>
+                        <option value=8>8</option>
+                        <option value=9>9</option>
+                        <option value=10>10</option>
+                        <option value=12>12</option>
+                        <option value=20>20</option>
+                 </select>
+
+       
+               Start angle: <select id='polygons-start-angle-select'>
+                        <option value=0 select>0</option>
+                        <option value=22.5>22.5</option>
+                        <option value=45>45</option>
+                        <option value=67.5>67.5</option>
+                        <option value=90>90</option>
+                 </select>
+
+               Fill <input id='polygons-fillCheckbox' type='checkbox' checked/>
+               <button id='polygons-erase-all-button'>Erase all</button>
+            </div>
+         <div id='polygons-transparency-slider'></div>
+      </div>
+
+      <canvas id='polygons-canvas' width='820' height='540'>
+         Canvas not supported
+      </canvas>
+
+  <script src="polygonExample.js"></script>
+  <script src="polygon.js"></script>
+  <script src="roundedrectangle.js"></script>
+  <script src="sliders.js"></script>
+  <script src="example.js"></script>
+  <script src="jscolor.js"></script>
+</body>
+</html>
+
